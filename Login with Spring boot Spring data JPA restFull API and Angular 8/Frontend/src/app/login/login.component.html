@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+        Login
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="row" *ngFor="let element of elements">
+                <div class="col">
+                    <div class="form-group position-relative">
+                        <label for="my-{{element}}">{{showLabel(element)}}</label>
+                        <input id="my-{{element}}" class="form-control" type="text" 
+                        (keyup) = "onkeyup($event.target.value, element)"
+                        (blur) = "onblur(element)">
+                        <span *ngIf="showIconOk(element)" class="fa fa-check valid-feedback feedback-icon" aria-hidden="true"></span>
+                        <span *ngIf="showIconError(element)" class="fa fa-warning invalid-feedback feedback-icon" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="my" style="visibility:hidden;">1</label>
+                    <input *ngIf="element == 'name'" id="my" class="form-control" type="text" value="{{opeName}}">
+                </div>
+            </div>
+            <button class="btn btn-primary" type="button" [disabled] = "disButton()" (click)="submit()">Login</button>
+       </form>
+    </div>
+</div>
